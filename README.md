@@ -1,5 +1,5 @@
 # desrist2020-demo
-Source code for Blockchain certified CVs for trusted information for conference [DESRIST2020](http://desrist2020.org/).
+Source code for Blockchain certified Documents for trusted information (BC-DTI) for conference [DESRIST2020](http://desrist2020.org/).
 TODO: Fill-in more information about his application/demo
 
 ### Repository Overview
