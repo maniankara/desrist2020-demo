@@ -6,3 +6,6 @@ TODO: Fill-in more information about his application/demo
 * hyperledger-chaincode/ - Contains chaincode for this application
 * hyperledger-api-server/ - API server implementation for the chaincode
 * website/ - Frontend for the application
+
+### Prerequisites
+1. golang >= 1.13.5
