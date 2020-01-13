@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
 <body>
+<script>
+	function myFunction()
+    {
+    	window.alert("Please double check the social security and document before submitting to Blockchain.")
+    }
+</script>
 <form>
 <h1 align = "center"> Document Upload Page </h1>
 
@@ -30,7 +36,7 @@
   </tr>
   <tr>
     <td></td>
-  	<td><input type="submit" value="Submit">
+  	<td><input type="submit" value="Submit" onclick = "myFunction()">
         <input type="reset" value="Reset"></td>
   </tr>
   <tr>
