@@ -7,6 +7,10 @@ TODO: Fill-in more information about his application/demo
 * hyperledger-api-server/ - API server implementation for the chaincode
 * website/ - Frontend for the application
 
+### Architecture diagram
+
+![Architecture diagram](./desrist2020_arch.png)
+
 ### Prerequisites
 1. golang >= 1.13.5
 2. Hyperledger Fabric = 1.4.4
