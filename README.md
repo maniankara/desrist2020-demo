@@ -11,6 +11,12 @@ TODO: Fill-in more information about his application/demo
 
 ![Architecture diagram](./desrist2020_arch.png)
 
+### Web Interfaces
+
+![Web Interfaces diagram](./DocUpload.jpg)
+
+![Web Interfaces diagram](./Verification.jpg)
+
 ### Prerequisites
 1. golang >= 1.13.5
 2. Hyperledger Fabric = 1.4.4
