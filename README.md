@@ -13,7 +13,7 @@ TODO: Fill-in more information about his application/demo
 
 ### Web Interfaces
 
-![Web Interfaces diagram](./webapp/DocUpload.png)
+![Web Interfaces diagram](./DocUpload.png)
 
 ![Web Interfaces diagram](./webapp/Verification.jpg)
 
