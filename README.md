@@ -13,9 +13,9 @@ TODO: Fill-in more information about his application/demo
 
 ### Web Interfaces
 
-![Web Interfaces diagram](./DocUpload.jpg)
+![Web Interfaces diagram](./desrist2020-demo/webapp/DocUpload.jpg)
 
-![Web Interfaces diagram](./Verification.jpg)
+![Web Interfaces diagram](./desrist2020-demo/webapp/Verification.jpg)
 
 ### Prerequisites
 1. golang >= 1.13.5
