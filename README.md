@@ -2,26 +2,31 @@
 Source code for Blockchain certified Documents for trusted information (BC-DTI) for conference [DESRIST2020](http://desrist2020.org/).
 TODO: Fill-in more information about his application/demo
 
-### Repository Overview
+## Repository Overview
 * hyperledger-chaincode/ - Contains chaincode for this application
 * hyperledger-api-server/ - API server implementation for the chaincode
 * website/ - Frontend for the application
 
-### Architecture diagram
+## Architecture diagram
 
-![Architecture diagram](./desrist2020_arch.png)
+<!-- ![Architecture diagram](./desrist2020_arch.png) -->
+<img src="./desrist2020_arch.png"/>
 
-### Web Interfaces
+## Web Interfaces
+### University view
+<!-- ![Web Interfaces diagram](./DocUpload.png)-->
+<img src="./DocUpload.png" width="70%" height="70%"/>
 
-![Web Interfaces diagram](./DocUpload.png)
+### Recruiter/Verifiers view
+<!-- ![Web Interfaces diagram](./webapp/Verification.jpg) -->
+<img src="./webapp/Verification.jpg" width="80%" height="80%"/>
 
-![Web Interfaces diagram](./webapp/Verification.jpg)
 
-### Prerequisites
+## Prerequisites
 1. golang >= 1.13.5
 2. Hyperledger Fabric = 1.4.4
 
-### Deployment
+## Deployment
 1. Package the chaincode, this will create `dti.tgz` in the current directory
 ```
 cd hyperledger-chaincode/dti/
