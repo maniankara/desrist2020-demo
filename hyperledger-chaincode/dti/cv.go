@@ -1,7 +1,6 @@
 /*
- * Copyright IBM Corp All Rights Reserved
+ * Copyright @maniankara, @vmarella All Rights Reserved
  *
- * SPDX-License-Identifier: Apache-2.0
  */
 
 package main
