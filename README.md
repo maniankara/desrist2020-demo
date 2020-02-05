@@ -7,7 +7,12 @@ TODO: Fill-in more information about his application/demo
 * hyperledger-api-server/ - API server implementation for the chaincode
 * website/ - Frontend for the application
 
-## Architecture diagram
+## Architecture diagram - High level
+
+<!-- ![Architecture diagram](./desrist2020_arch.png) -->
+<img src="./desrist2020_arch_web.png"/>
+
+## Architecture diagram - Hyperledger fabric network v2.0
 
 <!-- ![Architecture diagram](./desrist2020_arch.png) -->
 <img src="./desrist2020_arch.png"/>
