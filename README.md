@@ -26,6 +26,21 @@ TODO: Fill-in more information about his application/demo
 <!-- ![Web Interfaces diagram](./webapp/Verification.jpg) -->
 <img src="./webapp/Verification.jpg" width="80%" height="80%"/>
 
+## Work flow diagram
+<img src="./desrist2020_arch_flow.png" width="80%" height="80%"/>
+
+### Work flow - Uploader
+1. The acceptor of the university uploads the document which needs to be inserted to the system.
+2. The SHA256 of the document is calculated and awaits for approver for endorsement.
+3. The approver verifies the correctness of the document and signs it.
+4. This is send to the chaincode which submites the transaction proposal to the orderer.
+5. Orderer orders a new transaction and mines a fresh block with the data.
+
+### Work flow - Verifier
+1. The verifier uploads the document to be verified from the verification page.
+2. The SHA256 of the document is calculated and submits to the chaincode.
+3. The chaincode fetches the correct SHA256 of the document from the blockchain and verifies it with the one SHA256 provided by the verifier.
+4. The chaincode returns true or false based on check.
 
 ## Prerequisites
 1. golang >= 1.13.5
