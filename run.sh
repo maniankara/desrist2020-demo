@@ -1,13 +1,20 @@
 #!/bin/bash
 set -e
 
+
+
 function usage {
     echo "Usage:"
     echo "Setup the application for debian based environments"
     echo "Syntax:"
-    echo "./$(basename $0) [fabric|api|website]"
+    echo "./$(basename $0) [fabric|api|website|cc]"
     echo "E.g.:"
-    echo "./$(basename $0) fabric # Performs the hyperledger fabric installation"
+    echo "./$(basename $0) fabric-system # Performs the installation of system packages necessary for fabric"
+    echo "./$(basename $0) fabric-platform # Performs the installation of hyperledger fabric+fabric-samples and performs network up"
+    echo "./$(basename $0) fabric-up # Performs the network up"
+    echo "./$(basename $0) fabric-down # Performs the network down"
+    echo "./$(basename $0) fabric # Performs fabric-system+fabric-platform in one go"
+    echo "./$(basename $0) cc # Performs chaincode installation"
     echo "./$(basename $0) api # Performs the hyperledger fabric api server installation"
     echo "./$(basename $0) website # Performs the frontend installation"
     exit -1
@@ -37,17 +44,22 @@ function fabric-platform {
     # Run bootstrap
     echo "----------- Installing hyperledger fabric ----------"
     sg - docker -c '
-    curl -sSL https://bit.ly/2ysbOFE | bash -s -- 2.0.0-beta 1.4.4 0.4.18
+    curl -sSL https://bit.ly/2ysbOFE | bash -s
     '
     # Setup path
-    echo "export PATH=$PATH:~/hyperledger/fabric-samples/bin" >> ~/.bashrc
+    echo "export PATH=$PATH:$PWD/fabric-samples/bin" >> ~/.bashrc
     source ~/.bashrc
-    # Start the cluster
-    (cd fabric-samples/first-network;
-    sg - docker -c '
-    echo "y" |./byfn.sh generate
-    echo "y" |./byfn.sh up
-    '
+}
+
+function _network-up-down {
+    cmd="$1"
+    if [ "$1" == "up" ]; then
+        cmd="up createChannel -c cvchannel -s couchdb"
+    fi
+    (cd fabric-samples/test-network;
+    sg - docker -c "
+    echo 'y' |./network.sh $cmd
+    "
     )
     # Verify fabric platform installation
     echo "----------- Listing active containers --------------"
@@ -56,18 +68,27 @@ function fabric-platform {
     '
 }
 
+function fabric-up {
+    _network-up-down up
+}
+
+function fabric-down {
+    _network-up-down down
+}
+
 function fabric {
     # Install the system-level components
     fabric-system "$*"
     # Install hyperledger fabric
     fabric-platform
+}
 
-
-
+function cc {
+    bash -x ./hyperledger-chaincode/dti/scripts/deployCC.sh
 }
 
 function main {
-    if [ "$1" = "" ]; then
+    if [ "$1" = "" -o "$1" = "-h" ]; then
         usage
     fi
     $1 $*
