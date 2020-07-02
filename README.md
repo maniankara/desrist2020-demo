@@ -55,29 +55,21 @@ TODO: Fill-in more information about his application/demo
 ```
 ./run.sh fabric-platform
 ```
-3. Get the test network up with `cvchannel`
+3. Get the test network up with default `mychannel`
 ```
-./run.sh fabric-up
+(cd fabric-samples/test-network; ./network.sh down && ./network.sh up createChannel -s couchdb && ./network.sh deployCCCV)
 ```
-4. Install the chaincode
+4. Verify existing documents in the network
 ```
-./run.sh cc
+(cd fabric-samples/test-network; FABRIC_CFG_PATH=$PWD/../config/ ./scripts/insert.sh 0)
 ```
-5. Obtain the `sha256sum` of a test ID and Document
+5. Insert the `sha256sum` of a test ID (`111092-221P`) and first Document [test_doc.txt](./hyperledger-chaincode/dvbtci/testdata/test_doc.txt)
 ```
-ID=$(echo '111092-221P'|sha256sum|awk {'print $1'})
-DOC=$(sha256sum /opt/gopath/src/github.com/chaincode/dti/testdata/test_doc.txt|awk {'print $1'})
+(cd fabric-samples/test-network; FABRIC_CFG_PATH=$PWD/../config/ ./scripts/insert.sh 1)
 ```
-6. Install and instantiate the chaincode on channel `mychannel` on `Org1`.
+6. Insert the `sha256sum` of a test ID (`111092-221P`) and second Document [test_doc2.txt](./hyperledger-chaincode/dvbtci/testdata/test_doc2.txt)
 ```
-export ORDERER_CA=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
-export CHANNEL_NAME=mychannel
-
-peer chaincode install -n dti -v 0.0.1 -p github.com/chaincode/dti
-peer chaincode instantiate -n dti -v 0.0.1 -C mychannel -c '{"Args":["'$ID'", "'$DOC'"]}' -P "OR('Org1.peer')" -o orderer.example.com:7050 --tls --cafile $ORDERER_CA
+(cd fabric-samples/test-network; FABRIC_CFG_PATH=$PWD/../config/ ./scripts/insert.sh 2)
 ```
-7. Query and test
-```
-peer chaincode query -n dti -c '{"Args":["query","'$ID'"]}' -C mychannel
-```
-Output should be something like: `c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4` which is equivalent of `$DOC`
+7. The verification can also been seen in the console and also from couchdb of `peer0` or `peer1`
+http://localhost:5984 or http://localhost:7984
